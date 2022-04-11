@@ -30,7 +30,11 @@ public class Wetlands{
         events = new Event[MAX_EVENT];
 
     }
-
+    
+    /**
+	 * The method takes care of finding an empty space
+	 * @return, take an empty position
+     */
     public boolean hasSpaceEvent(){
 		boolean emptyPositionEvent = false;
 		for(int i=0; i < MAX_EVENT && !emptyPositionEvent;i++){
@@ -40,7 +44,11 @@ public class Wetlands{
 		}
 		return emptyPositionEvent;
 	}
-	
+    
+    /**
+	 * the method this tomar una posicion del arreglo de event
+	 * @return, if it finds a position the wetland is added
+	 */
 	public int getEmptyPositionEvent(){
 		boolean emptyPositionEvent = false;
 		int positioEvent= -1;
@@ -55,29 +63,25 @@ public class Wetlands{
 	}
 
 	/**
-	 * The addEvent method is for registering a Event.
-	 * @param typeEvent
-	 * @param description
-	 * @param idClient
-	 * @param value
-	 * @param dateEvent
+	 * The addEvent method is for add a Event.
+     * @param event
 	 */
 	public String addEvent(Event event){
 		String out="";
 		int emptyPositionEvent= getEmptyPositionEvent();
 
 		if(emptyPositionEvent==-1){
-			out="El evento no se agrego";
+			out="The event was not added";
 		}else{
 			events[emptyPositionEvent]= event;
-			out= "Se registro un evento con el nombre de: "+name;
+			out= "An event was recorded with the name of: "+name;
 		}
 	
 		return out;
 	}
 
 	/**
-	 * Method for returning the informations of the events as Strings
+	 * Method for returning the informations of the events.
 	 */
 	public void getEvent(){
 		for(int i =0 ; i <MAX_EVENT; i++){
@@ -87,6 +91,11 @@ public class Wetlands{
 		}
 	}
 
+    /**
+	 * The method takes care of finding a event in the wetland.
+	 * @param id, id the event.
+	 * @return foundEvent,a event was found.
+	 */
 	public int findIndexEvent(String id){
 		boolean flag=false;
 		int foundEvent=-1;
@@ -99,6 +108,11 @@ public class Wetlands{
 		return foundEvent;
 	}
 
+    /**
+	 * The method is responsible for searching for a event with in the wetland.
+	 * @param id, id with which the location will be found within a range of event.
+	 * @return index, If no event is found, index will be false, if event is found, index will be true.
+	 */
     public boolean searchEvent(String id){
 		boolean index = false;
 		for(int i=0; i<MAX_EVENT && !index;i++){
@@ -109,6 +123,10 @@ public class Wetlands{
 		return index;
 	}
     
+    /**
+	 * The method takes care of finding an empty space
+	 * @return, take an empty position
+     */
     public boolean hasSpaceSpecie(){
 		boolean emptyPositionSpecie = false;
 		for(int i=0; i < MAX_SPECIE && !emptyPositionSpecie;i++){
@@ -120,6 +138,11 @@ public class Wetlands{
 		return emptyPositionSpecie;
 	}
 	
+    
+    /**
+	 * the method this tomar una posicion del arreglo de specie
+	 * @return, if it finds a position the wetland is added
+	 */
 	public int getEmptyPositionSpecie(){
 		boolean emptyPositionSpecie = false;
 		int positioSpecie= -1;
@@ -142,17 +165,17 @@ public class Wetlands{
 		int emptyPosSpecie= getEmptyPositionSpecie();
 
 		if(emptyPosSpecie==-1){
-			out="La especie no se agrego";
+			out="The species was not added";
 		}else{
 			species[emptyPosSpecie]= specie;
-			out= "Se registro una especie con el nombre de: "+name;
+			out= "A species was recorded under the name of: "+name;
 		}
 	
 		return out;
 	}
 
 	/**
-	 * Method for returning the informations of the figures in the manager as Strings
+	 * Method for returning the informations of the specie.
 	 */
 	public void getSpecie(){
 		for(int i =0 ; i <MAX_SPECIE; i++){
@@ -162,6 +185,11 @@ public class Wetlands{
 		}
 	}
 
+    /**
+	 * The method takes care of finding a specie in the wetland.
+	 * @param name, the name specie
+	 * @return foundSpecie,a specie was found.
+	 */
 	public int findIndexSpecie(String name){
 		boolean flag=false;
 		int foundSpecie=-1;
@@ -174,6 +202,11 @@ public class Wetlands{
 		return foundSpecie;
 	}
 
+    /**
+	 * The method is responsible for searching for a specie with in the wetland.
+	 * @param name, name with which the location will be found within a range of specie
+	 * @return index, If no specie is found, index will be false, if specie is found, index will be true.
+	 */
     public boolean searchSpecie(String name){
 		boolean index = false;
 		for(int i=0; i<MAX_SPECIE&& !index;i++){
@@ -305,12 +338,12 @@ public class Wetlands{
     }
 
     public String toString(){
-        return  "Nombre del humedal: "+name+"\n"+
-                "Ubicacion de la zona"+locationZone+"\n"+
-                "Tipo de zona: "+typeZone+"\n"+
+        return  "Wetland name: "+name+"\n"+
+                "Location of the area"+locationZone+"\n"+
+                "Zone type: "+typeZone+"\n"+
                 "Area: "+area+"\n"+
-                "Foto: "+url+"\n"+
-                "Area protegida: "+protecArea;
+                "Photo: "+url+"\n"+
+                "Area protect: "+protecArea;
     }
 
 }

@@ -102,9 +102,9 @@ public class Event{
     }
 
     public String toString(){
-        return  "Descripcion del evento: "+description+"\n"+
-                "Id del cliente: "+idClient+"\n"+
-                "Costo: " + value +"\n"+
-                "Fecha en el que se realizo el evento: "+dateEvent;
+        return  "Description of the event: "+description+"\n"+
+                "Customer id: "+idClient+"\n"+
+                "Cost: " + value +"\n"+
+                "Date the event took place: "+dateEvent;
     }
 }

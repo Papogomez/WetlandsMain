@@ -17,28 +17,28 @@ public class DayInternacionalWetlands{
 
     private Scanner sc;
     
-	// actualizacion
-
-	
     public DayInternacionalWetlands() {
 		sc= new Scanner(System.in);
 		wet = new WetlandsMain();
 		wetlands= new Wetlands[MAX_WETLANDS];
 	}
 	
+	/**
+	 * The methodo this Main
+	 * @param a
+	 */
 
 	public static void main (String[] a){
-		// creando un objeto de la clase principal
+		// creating an object of the main class
 		DayInternacionalWetlands obPpal = new DayInternacionalWetlands();
 		
-		//Llamando el método que inicializa el humedal pidiendo datos al usuario
+		//Calling the method that initializes the wetland requesting data from the user
 		obPpal.initDayInternationalWetland();
 		
-		// variable para leer la entrada
+		// variable to read input
 		int option= 0;
 		
-		//ciclo para ejecutar el menu mientras que el usuario no
-		// elija la opciOn para salir (0)
+		// loop to execute the menu while the user does not choose the option to exit (0)
 		do {
 		    option = obPpal.showMenu();
 		    obPpal.answerOption(option);
@@ -49,9 +49,8 @@ public class DayInternacionalWetlands{
 
 
 	/**
-	 * Metodo que se encarga de llamar a los mEtodos que resuelven cada uno de los 
-	 * requerimientos de la aplicaciOn 
-	 * @param userOption, int es el nUmero ingresado por el usuario (no ha sido validado) 
+	 * Method that is responsible for calling the methods that resolve each of the requirements of the application
+	 * @param userOption, int is the number entered by the user (has not been validated)
 	 */
 	public void answerOption(int userOption) {
 		switch(userOption) {
@@ -101,31 +100,31 @@ public class DayInternacionalWetlands{
 		boolean protecArea=false;
 		int amountManagement=0;
 
-		System.out.println("\nDigite el nombre del humedal es: ");
+		System.out.println("\nEnter the name of the wetland is:");
 		name=sc.nextLine();
 
-		System.out.println("\nDigite la localizacion de la zona: "+"\n"+
-                            "1) Urbana"+"\n"+
+		System.out.println("\nEnter the location of the area: "+"\n"+
+                            "1) urban"+"\n"+
                             "2) Rural");
 		locationZone=sc.nextLine();
 
         if(locationZone.equals("1")){
-            System.out.println("\nDigite nombre del barrio:");
+            System.out.println("\nEnter the name of the neighborhood:");
         }else if(locationZone.equals("2")){
-            System.out.println("\nIngrese el nombre del corregimiento:");
+            System.out.println("\nEnter the name of the district:");
         }
         location = sc.nextLine();
 
-        System.out.println("\nDigite el tipo de zona:"+"\n"+
-    		                "1) Publico"+"\n"+
-                            "2) Privado");
+        System.out.println("\nEnter the zone type:"+"\n"+
+    		                "1) Public"+"\n"+
+                            "2) Private");
         typeZone=sc.nextLine();
 
-		System.out.println("\nDigite el area del humedal: ");
+		System.out.println("\nEnter the area of the wetlands ");
 		area=sc.nextInt();
 
-		System.out.println("\nDigite si el humedal se encuentra en un area protegida: "+"\n"+
-                            "1) Si"+"\n"+
+		System.out.println("\nEnter if the wetland is in a protected area:"+"\n"+
+                            "1) Yes"+"\n"+
                             "2) No");
 		pa = sc.nextInt();
 
@@ -136,7 +135,7 @@ public class DayInternacionalWetlands{
 			protecArea = false;
 		}
 
-		System.out.println("\nDigite la url de la foto del humedal:");
+		System.out.println("\nEnter the url of the wetland photo:");
 		sc.nextLine();
 		url = sc.nextLine();
 
@@ -144,6 +143,11 @@ public class DayInternacionalWetlands{
 
 	}
 
+	/**
+	 * The wetlands method is responsible for searching for a wetland within the range the 80.
+	 * @param name, Name with which the location will be found within a range of wetland.
+	 * @return index, If no wetland is found, index will be false, if wetland is found, index will be true.
+	 */
     public boolean searchWetlands(String name){
         boolean index = false;
         for(int i=0; i<MAX_WETLANDS && !index;i++){
@@ -154,6 +158,9 @@ public class DayInternacionalWetlands{
         return index;
     }
 
+	/**
+	 * The method is in charge of registering a event inside the wetland.
+	 */
     public void registerEvent(){
 
     	String description, idClient, eventDate; 
@@ -161,26 +168,26 @@ public class DayInternacionalWetlands{
         int typeEvent=0, year, month, day;
 		Date dateEvent=null;
 
-        System.out.println("\nDigite el nombre de la persona encargada del evento:");
+        System.out.println("\nEnter the name of the person in charge of the event:");
 		idClient=sc.nextLine();
 
-        System.out.println("\nDigite la fecha en la cual se realizara el evento (AAAAMMDD):");
+        System.out.println("\nEnter the date on which the event will take place (YYYYMMDD):");
 		eventDate=sc.nextLine();
 		year = Integer.valueOf(eventDate.substring(0, 4));
 		month = Integer.valueOf(eventDate.substring(4, 6));
 		day = Integer.valueOf(eventDate.substring(6, 8));
 		dateEvent = new Date(day, month, year);
 
-        System.out.println("\nDigite el evento que se realizara:"+"\n"+
-                            "1) Mantenimiento"+"\n"+
-                            "2) Visitas del colegio"+"\n"+
-                            "3) Actividades de mejoramiento");
+        System.out.println("\nEnter the event to be held:"+"\n"+
+                            "1)	Maintenance"+"\n"+
+                            "2) School visits"+"\n"+
+                            "3) Improvement activities");
         typeEvent= sc.nextInt();
 
-        System.out.println("\nDigite el valor del evento: ");
+        System.out.println("\nEnter the value of the event: ");
         value =sc.nextDouble();
 
-        System.out.println("\nDigite la descripcion del evento:");
+        System.out.println("\nEnter the description of the event:");
 		sc.nextLine();
 		description=sc.nextLine();
         
@@ -189,25 +196,28 @@ public class DayInternacionalWetlands{
 		
 	}
 
+	/**
+	 * The method is in charge of registering a specie inside the wetland.
+	 */
     public void registerSpecie(){
 
         String name,scientificName,typeSpecie;
         boolean migrate=false;
 		int m=0;
 		
-        System.out.println("\nDigite el nombre de la especie:");
+        System.out.println("\nType the name of the species:		");
 		name=sc.nextLine();
 		
-        System.out.println("\nDigite el nombre cientifico de: "+name);
+        System.out.println("\nEnter the scientific name of: "+name);
 		scientificName=sc.nextLine();
 
-        System.out.println("\nDigite el tipo de especie: "+"\n"+
+        System.out.println("\nEnter the type of species: "+"\n"+
                             "1) Fauna "+"\n"+
                             "2) Flora");
 		typeSpecie=sc.nextLine();
 
-        System.out.println("\nDigite si la especie es migratoria:"+"\n"+
-                            "1) Si"+"\n"+
+        System.out.println("\nEnter if the species is migratory:"+"\n"+
+                            "1) Yes"+"\n"+
                             "2) No");
         m = sc.nextInt();
 
@@ -223,32 +233,31 @@ public class DayInternacionalWetlands{
 	}
 
 	/**
-	 * Metodo que permite crear instancias de los objetos con informaciOn ingresada
-	 * por el usuario
+	 * This method is used to display a message when the application starts.
 	 */
 	public void initDayInternationalWetland() {
 		String nit;
-		System.out.println("Bienvenido al software de control de humedales");
+		System.out.println("Welcome to wetland monitoring software");
 		wet = new WetlandsMain();
 	}
 
 	/**
-	 * Metodo que muestra el menu de la aplicación
-	 * @return input, int es la opciOn elegida por el usuario
+	 * Method that shows the application menu
+	 * @return input, int is the option chosen by the user.
 	 */
 	public int showMenu() {
 		int input;
-		System.out.println("\n\nMenu de la aplicación del control de humedales, digite una opción:\n\n"+ 
-		                    "(1) Crear un humedal\n" +
-		                    "(2) Registrar una nueva especie en el humedal\n" +
-		                    "(3) Registrar un evento en el humedal\n"+
-		                    "(4) Informar para cada humedal, la cantidad de mantenimientos en un año dado por el usuario.\n"+
-		                    "(5) Desplegar el nombre del humedal con menos especies de flora.\n"+
+		System.out.println("\n\nWetland control application menu, type an option:\n\n"+ 
+		                    "(1) Create a wetland\n" +
+		                    "(2) Register a new species in the wetland\n" +
+		                    "(3) Register an event in the wetland\n"+
+		                    "(4) Inform for each wetland, the amount of maintenance in a year given by the user.\n"+
+		                    "(5) Display the name of the wetland with fewer species of flora.\n"+
                             "(6) Dado el nombre de una especie, desplegar los humedales donde se encuentre\n"+
-                            "(7) Desplegar la información de todos nuestros humedales, incluyendo el total de especies por tipo (no incluya información de eventos).\n"+
-                            "(8) Desplegar el nombre del humedal con mayor cantidad de animales (aves, mamíferos y acuáticos)\n"+
-		                    "(0) Para salir\n\n" +
-							"Opción: "
+                            "(7) Display the information of all our wetlands, including the total number of species by type (do not include information on events).\n"+
+                            "(8) Display the name of the wetland with the largest number of animals (birds, mammals and aquatic)\n"+
+		                    "(0) To go out\n\n" +
+							"Option: "
 	
 		);
 		input = sc.nextInt();
@@ -258,14 +267,15 @@ public class DayInternacionalWetlands{
 
 	/**
 	 * The addWetlands method is for registering a wetland.
-	 * @param name
-	 * @param locationZone
-	 * @param location
-	 * @param typeZone
-	 * @param area
-	 * @param url
-	 * @param protectArea
-	 * @param amountManagement
+	 * @param name, name wetland
+	 * @param locationZone, location zone the wetland
+	 * @param location, location the wetland
+	 * @param typeZone, type zone the wetland
+	 * @param area, area the wetland
+	 * @param url, url the wetland
+	 * @param protectArea, protect area the wetland
+	 * @param amountManagement, amount management the wetland
+	 * @return out,show an exit message.
 	 */
 	public String addWetlands(String name,String locationZone, String location, String typeZone, 
 	                          double area,String url,boolean protecArea, int amountManagement){
@@ -273,16 +283,20 @@ public class DayInternacionalWetlands{
 		int emptyPosWetlands= getEmptyPositionWetlands();
 
 		if(emptyPosWetlands==-1){
-			out="El wetland no se agrego";
+			out="The wetland was not added";
 		}else{
 			wetlands[emptyPosWetlands]= new Wetlands(name, locationZone, location, typeZone, area, url, protecArea, amountManagement);
-			out= "Se registro un wetland con el nombre de "+name;
+			out= "A wetland was registered under the name of"+name;
 			positionLastWetland = emptyPosWetlands;
 		}
 	
 		return out;
 	}
 
+	/**
+	 * the method this tomar una posicion del arreglo de wetland
+	 * @return, if it finds a position the wetland is added
+	 */
 	public int getEmptyPositionWetlands(){
 		boolean emptyPosWetlands = false;
 		int positioWetlands= -1;
@@ -296,6 +310,12 @@ public class DayInternacionalWetlands{
 		return positioWetlands;
 	}	
 
+
+	/**
+	 * The method takes care of finding a space in the wetland.
+	 * @param name, name the wetland.
+	 * @return foundWetland,a wetland was found.
+	 */
 	public int findIndexWetlands(String name){
 		boolean flag=false;
 		int foundWetlands=-1;
@@ -308,17 +328,25 @@ public class DayInternacionalWetlands{
 		return foundWetlands;
 	}
 
+	/**
+	 * The method this is in charge of the maintenance of the wetland
+
+	 */
 	public void mantenances(){
 
         int year=0;
 
-        System.out.println("\nDigite el año del cual desea conocer los mantenimientos:");
+        System.out.println("\nEnter the year for which you want to know the maintenance:");
 		year=sc.nextInt();
 
 		System.out.println(getEnviromentsManagement(year));	
 
 	}
 
+	/**
+	 * The method it is responsible for finding the species with the least flora
+
+	 */
 	public void speciesFlora(){
 
         String specieF="";
@@ -335,13 +363,18 @@ public class DayInternacionalWetlands{
 			}
 		}
 
-		System.out.println("El humedal con menos especies de flora es : " + specieF);	
+		System.out.println("The wetland with fewer species of flora is: " + specieF);	
 
 	}
 
+	/**
+	 * The method is in charge of finding all the maintenance carried out in an event taking the year in which a wetland was registered.
+	 * @param year, Year the register event of the mantenance in the wetlands.
+	 * @return exit, If a maintenance is found, 1 is added.
+	 */
 	public String getEnviromentsManagement(int year) {
 
-		String salida="";
+		String exit="";
 		int totalManagement=0;
 
 		for(int i=0; i < wetlands.length; i++){
@@ -356,14 +389,19 @@ public class DayInternacionalWetlands{
 						}
 					}
 				}
-				salida = salida + "Humedal " + wetlands[i].getName() + ": " + totalManagement + "\n";
+				exit = exit + "Humedal " + wetlands[i].getName() + ": " + totalManagement + "\n";
 			}	
 		}
 
-		return salida;
+		return exit;
 
 	}
 
+	/**
+	 * the method takes the number of species of flora within a wetland.
+	 * @param wetland, wetland.
+	 * @return, total number of flora species.
+	 */
 	public int getNumSpecieFlora(Wetlands wetland) {
 
 		int total=0;
@@ -381,6 +419,11 @@ public class DayInternacionalWetlands{
 		return total;
 	}
 
+	/**
+	 * the method takes the number of species of fauna within a wetland.
+	 * @param wetland, wetland.
+	 * @return, total number of fauna species.
+	 */
 	public int getNumSpecieFauna(Wetlands wetland) {
 
 		int total=0;
@@ -398,11 +441,14 @@ public class DayInternacionalWetlands{
 		return total;
 	}
 
+	/**
+	 * The method is in charge of taking all the information of the wetlands.
+	 */
 	public void getInformationWetlands() {
 
 		String salida="";
 		String infHumedal="";
-		String infTotal="Total especies por Tipo:\n";
+		String infTotal="Total species by Type:\n";
 		String typeLocation="";
 		String typeZone="";
 		String protectedArea="";
@@ -416,29 +462,29 @@ public class DayInternacionalWetlands{
 				Wetlands wetland = wetlands[i];
 				
 				if (wetland.getLocationZone().equals("1")){
-					typeLocation = "Urbana";
+					typeLocation = "Urban";
 				}else if (wetland.getLocationZone().equals("2")){
 					typeLocation = "Rural";
 				}
 
 				if (wetland.getTypeZone().equals("1")){
-					typeZone = "Publico";
+					typeZone = "Public";
 				}else if (wetland.getTypeZone().equals("2")){
-					typeZone = "Privado";
+					typeZone = "Private";
 				}				
 
 				if (wetland.isProtecArea() == true){
-					protectedArea = "Si";
+					protectedArea = "Yes";
 				}else if (wetland.isProtecArea() == false){
 					protectedArea = "No";
 				}				
 
-				infHumedal = infHumedal + "Humedal: " + wetland.getName() + "\n" +
-				                          "Tipo Localización: " + typeLocation + ", " + 
-										  "Localización: " + wetland.getLocation() + ", " +
-										  "Tipo de zona: " + typeZone + ", " +
+				infHumedal = infHumedal + "Wetland: " + wetland.getName() + "\n" +
+				                          "Type the location: " + typeLocation + ", " + 
+										  "Loation: " + wetland.getLocation() + ", " +
+										  "Type the zone: " + typeZone + ", " +
 										  "Area: " + String.valueOf(wetland.getArea()) + ", " +
-										  "Area protegida: " + protectedArea + ", " + 
+										  "Area protect: " + protectedArea + ", " + 
 										  "URL: " + wetland.getUrl() + "\n\n";
 
 				totalFlora = 0;
@@ -455,7 +501,7 @@ public class DayInternacionalWetlands{
 						}
 					}
 				}
-				infTotal = infTotal + "Humedal " + wetlands[i].getName() + "   Fauna : " + totalFauna + "\n" +
+				infTotal = infTotal + "Wetlands " + wetlands[i].getName() + "  Fauna : " + totalFauna + "\n" +
 															"                  Flora : " + totalFlora + "\n";
 			}	
 		}
@@ -465,17 +511,25 @@ public class DayInternacionalWetlands{
 
 	}	
 
+	/**
+	 * Show species name.
+	 */
 	public void speciesWetlands() {
 
 		String specieName;
 
-        System.out.println("\nDigite el nombre de la especie:");
+        System.out.println("\nType the name of the species:");
 		specieName=sc.nextLine();
 
 		System.out.println(getSpeciesWetlands(specieName));	
 
 	}	
 
+	/**
+	 * The method take the species from the wetlands
+	 * @param specieName, Name the specie.
+	 * @return namewetlands, the name of the species.
+	 */
 	public String getSpeciesWetlands(String specieName) {
 
 		String namesWetlands="";
@@ -501,6 +555,9 @@ public class DayInternacionalWetlands{
 		return namesWetlands;
 	}	
 
+	/**
+	 * the method calculate how many species of fauna are registered.
+	 */
 	public void speciesFauna(){
 
         String specieF="";
@@ -517,7 +574,7 @@ public class DayInternacionalWetlands{
 			}
 		}
 
-		System.out.println("El humedal con mayor cantidad de animales es : " + specieF);	
+		System.out.println("The wetland with the largest number of animals is: " + specieF);	
 
 	}
 

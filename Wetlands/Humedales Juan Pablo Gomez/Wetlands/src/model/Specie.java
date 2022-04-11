@@ -73,10 +73,10 @@ public class Specie{
     }
 
     public String toString(){
-        return "Especie: "+name+"\n"+
-                "Nombre cientifico"+nameScientific+ "\n"+
-                "La especie es migratoria"+migrate+"\n"+
-                "Tipo de especie"+typeSpecie;
+        return  "Name the specie: "+name+"\n"+
+                "Scientific name"+nameScientific+ "\n"+
+                "The species is migratory"+migrate+"\n"+
+                "Species type"+typeSpecie;
     }
 
 }
