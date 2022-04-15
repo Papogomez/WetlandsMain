@@ -1,14 +1,15 @@
 package model;
-
 public class WetlandsMain{
 
 
     private static final int MAX_WETLANDS=80;
     private Wetlands [] wetlands;                                                  
-    
-    public WetlandsMain(){
+
+	public WetlandsMain(){
         wetlands= new Wetlands[MAX_WETLANDS];
-    }
+		
+
+	}
 
     /**
 	 * The method takes care of finding an empty space
@@ -25,6 +26,7 @@ public class WetlandsMain{
 		return emptyPositionWetlands;
 	}
 	
+
 	/**
 	 * the method this tomar una posicion del arreglo de wetland
 	 * @return, if it finds a position the wetland is added

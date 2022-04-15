@@ -80,6 +80,9 @@ public class DayInternacionalWetlands{
         case 8: 
 			speciesFauna();
 			break;    
+		default: System.out.println("Invalid option");
+			break;
+		
 		}
 		
 		
@@ -89,7 +92,8 @@ public class DayInternacionalWetlands{
 	 * Method registerWetlands, allows the user to enter the respective data of the wetland.
 	 * 
 	 */
-	public void registerWetlands(){
+	
+	 public void registerWetlands(){
 
         String name="", locationZone="";
 		String location="";
@@ -99,34 +103,62 @@ public class DayInternacionalWetlands{
         int pa=0;
 		boolean protecArea=false;
 		int amountManagement=0;
+		boolean ch= false;
 
 		System.out.println("\nEnter the name of the wetland is:");
-		name=sc.nextLine();
+		name=sc.next();
 
-		System.out.println("\nEnter the location of the area: "+"\n"+
+		while(ch==false){
+		
+			System.out.println("\nEnter the location of the area: "+"\n"+
                             "1) urban"+"\n"+
                             "2) Rural");
-		locationZone=sc.nextLine();
+			locationZone=sc.next();
+
+			if(!locationZone.equals("1") && !locationZone.equals("2")){
+				System.out.println("Invalid option");
+			}else{
+				ch=true;
+			}
+
+		}
 
         if(locationZone.equals("1")){
             System.out.println("\nEnter the name of the neighborhood:");
         }else if(locationZone.equals("2")){
             System.out.println("\nEnter the name of the district:");
         }
+		sc.nextLine();
         location = sc.nextLine();
 
-        System.out.println("\nEnter the zone type:"+"\n"+
-    		                "1) Public"+"\n"+
-                            "2) Private");
-        typeZone=sc.nextLine();
+		ch=false;
+			while(ch==false){
+			System.out.println("\nEnter the zone type:"+"\n"+
+								"1) Public"+"\n"+
+								"2) Private");
+			typeZone=sc.nextLine();
+				if(!typeZone.equals("1") && !typeZone.equals("2")){
+					System.out.println("Invalid option");
+				}else{
+					ch = true;
+				}
+		}
 
 		System.out.println("\nEnter the area of the wetlands ");
-		area=sc.nextInt();
+		area=sc.nextInt();		
 
-		System.out.println("\nEnter if the wetland is in a protected area:"+"\n"+
-                            "1) Yes"+"\n"+
-                            "2) No");
-		pa = sc.nextInt();
+		ch=false;
+		while(ch==false){
+			System.out.println("\nEnter if the wetland is in a protected area:"+"\n"+
+								"1) Yes"+"\n"+
+								"2) No");
+			pa = sc.nextInt();
+			if(pa!=1 && pa!=2){
+				System.out.println("Invalid option");
+			}else{
+				ch = true;
+			}
+		}
 
 		if (pa == 1){
 			protecArea = true;
@@ -167,6 +199,7 @@ public class DayInternacionalWetlands{
         double value;
         int typeEvent=0, year, month, day;
 		Date dateEvent=null;
+		boolean ch= false;
 
         System.out.println("\nEnter the name of the person in charge of the event:");
 		idClient=sc.nextLine();
@@ -178,15 +211,23 @@ public class DayInternacionalWetlands{
 		day = Integer.valueOf(eventDate.substring(6, 8));
 		dateEvent = new Date(day, month, year);
 
-        System.out.println("\nEnter the event to be held:"+"\n"+
+		while(ch==false){
+       	 System.out.println("\nEnter the event to be held:\n"+
                             "1)	Maintenance"+"\n"+
                             "2) School visits"+"\n"+
                             "3) Improvement activities");
-        typeEvent= sc.nextInt();
+       	 typeEvent= sc.nextInt();
+			if(typeEvent != 1 && typeEvent !=2 && typeEvent !=3){
+				System.out.println("Invalid option");
+			}else{
+				ch=true;
+			}
+			
+		}
 
         System.out.println("\nEnter the value of the event: ");
         value =sc.nextDouble();
-
+		
         System.out.println("\nEnter the description of the event:");
 		sc.nextLine();
 		description=sc.nextLine();
@@ -201,25 +242,45 @@ public class DayInternacionalWetlands{
 	 */
     public void registerSpecie(){
 
-        String name,scientificName,typeSpecie;
+        String name,scientificName;
+		String typeSpecie="";
         boolean migrate=false;
 		int m=0;
-		
+		boolean ch=false;
+
         System.out.println("\nType the name of the species:		");
 		name=sc.nextLine();
 		
         System.out.println("\nEnter the scientific name of: "+name);
 		scientificName=sc.nextLine();
 
-        System.out.println("\nEnter the type of species: "+"\n"+
+		while(ch==false){
+        	System.out.println("\nEnter the type of species: "+"\n"+
                             "1) Fauna "+"\n"+
                             "2) Flora");
-		typeSpecie=sc.nextLine();
+			typeSpecie=sc.nextLine();
+			
+			if(!typeSpecie.equals("1") && !typeSpecie.equals("2")){
+				System.out.println("Invalid option");
+			}else{
+				ch=true;
+			}
+		}	
 
-        System.out.println("\nEnter if the species is migratory:"+"\n"+
+		ch=false;
+		while(ch==false){
+        	System.out.println("\nEnter if the species is migratory:"+"\n"+
                             "1) Yes"+"\n"+
                             "2) No");
-        m = sc.nextInt();
+        	m = sc.nextInt();
+			
+			if(m != 1 && m!=2){
+				System.out.println("Invalid option");
+			}else{
+				ch=true;
+			}
+			
+		}
 
 		if (m == 1){
 			migrate = true;
@@ -253,7 +314,7 @@ public class DayInternacionalWetlands{
 		                    "(3) Register an event in the wetland\n"+
 		                    "(4) Inform for each wetland, the amount of maintenance in a year given by the user.\n"+
 		                    "(5) Display the name of the wetland with fewer species of flora.\n"+
-                            "(6) Dado el nombre de una especie, desplegar los humedales donde se encuentre\n"+
+                            "(6) Given the name of a species, display the wetlands where it is found\n"+
                             "(7) Display the information of all our wetlands, including the total number of species by type (do not include information on events).\n"+
                             "(8) Display the name of the wetland with the largest number of animals (birds, mammals and aquatic)\n"+
 		                    "(0) To go out\n\n" +
@@ -335,11 +396,15 @@ public class DayInternacionalWetlands{
 	public void mantenances(){
 
         int year=0;
-
+	
+	
         System.out.println("\nEnter the year for which you want to know the maintenance:");
 		year=sc.nextInt();
-
 		System.out.println(getEnviromentsManagement(year));	
+			
+
+		
+				
 
 	}
 
